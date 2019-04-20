@@ -29,9 +29,10 @@ public class DataRestApiApplication {
 
             Account account = Account.builder()
                     .tag("eco Account")
+                    .holder(karim)
                     .build();
 
-            karim.addAccount(account);
+            karim.addAccount(account); // when Karim open an Account in our Bank
 
             holderRepository.save(karim);
 

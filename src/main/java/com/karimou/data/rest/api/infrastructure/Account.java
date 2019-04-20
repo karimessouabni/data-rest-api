@@ -20,5 +20,6 @@ public class Account {
 
     @ManyToOne
     @JoinColumn
+    @ToString.Exclude // resolving debugging stackOverFlow Exception
     private Holder holder;
 }
