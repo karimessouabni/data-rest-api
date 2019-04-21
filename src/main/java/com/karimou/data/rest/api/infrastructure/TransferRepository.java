@@ -5,4 +5,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TransferRepository extends JpaRepository<Transfer, Integer> {
+
+    Transfer findByAmount(Integer amount);
+
+    Transfer findByTransmitterAcc(Account transmitterAccount);
+
 }

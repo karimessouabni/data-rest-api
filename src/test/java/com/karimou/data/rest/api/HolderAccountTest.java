@@ -5,18 +5,20 @@ import com.karimou.data.rest.api.infrastructure.Account;
 import com.karimou.data.rest.api.infrastructure.AccountRepository;
 import com.karimou.data.rest.api.infrastructure.Holder;
 import com.karimou.data.rest.api.infrastructure.HolderRepository;
-import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class BankAccountTest {
+public class HolderAccountTest {
 
 
     @Autowired
@@ -25,25 +27,44 @@ public class BankAccountTest {
     @Autowired
     HolderRepository holderRepository;
 
-    @Test
-    public void saveAccountTest(){
+    private Holder karim;
 
-        Holder karim = Holder.builder()
+    private Account acc;
+
+
+    @Before
+    public  void prepareTest(){
+
+         karim = Holder.builder()
                 .firstName("kairm")
                 .lastName("essouabni")
                 .build();
 
-        Account acc = Account.builder()
+         acc = Account.builder()
                 .tag("SG account")
                 .build();
 
         karim.addAccount(acc);
-
         holderRepository.save(karim);
+
+    }
+
+    @Test
+    public void findHolderByAccountTest(){
+
+
         Holder karimFromDb = holderRepository.findByAccountsContains(acc).get(0);
 
-
         assertEquals(karimFromDb, karim);
+    }
+
+    @Test
+    public void findAccountByHolderTest(){
+
+
+      Account accountsFound = accountRepository.findByHolder(karim);
+
+        assertEquals(accountsFound, acc);
     }
 
 }
