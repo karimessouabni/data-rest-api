@@ -22,12 +22,19 @@ public class Holder {
 
     private String lastName;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "holder")
+    //OneToMany is by default Lazy
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "holder") // Using mapped by to no create a join table
     @Builder.Default //to force lombok to initialize the Set
+    // list or set is the same thing here
     private Set<Account> accounts = new HashSet<>();
 
     public void addAccount(Account account) {
         this.accounts.add(account);
         account.setHolder(this);
+    }
+
+    public void removeAccount(Account account) {
+        this.accounts.remove(account);
+        account.setHolder(null);
     }
 }
