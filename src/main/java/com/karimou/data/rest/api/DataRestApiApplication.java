@@ -52,7 +52,14 @@ public class DataRestApiApplication {
 
             karimAccount.makeTransfer(transfer100Euros, fatiAccount); // karim : KarimAccnt  --100€--> FatiAccnt
 
-            holderRepository.save(karim); // this save karim and it added account in the DB
+            /**
+             * Due to CASCADES this :
+             * 1 first save the holder karim,
+             * 2 then it save the karim account
+             * 3 and save finally the transfer linking karim and Fati accounts
+             */
+            holderRepository.save(karim);
+
 
 
 
