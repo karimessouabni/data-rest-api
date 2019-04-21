@@ -34,7 +34,7 @@ public class DataRestApiApplication {
 
             karim.addAccount(account); // when Karim open an Account in our Bank
 
-            holderRepository.save(karim);
+            holderRepository.save(karim); // this save karim and it added account in the DB
 
         };
 

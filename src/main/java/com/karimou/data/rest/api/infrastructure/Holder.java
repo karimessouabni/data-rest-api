@@ -11,7 +11,7 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(exclude = {"books"})
+@EqualsAndHashCode(exclude = {"accounts"})
 public class Holder {
 
     @Id
@@ -23,11 +23,11 @@ public class Holder {
     private String lastName;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "holder")
-    @Builder.Default
-    private Set<Account> books = new HashSet<>();
+    @Builder.Default //to force lombok to initialize the Set
+    private Set<Account> accounts = new HashSet<>();
 
     public void addAccount(Account account) {
-        this.books.add(account);
+        this.accounts.add(account);
         account.setHolder(this);
     }
 }
