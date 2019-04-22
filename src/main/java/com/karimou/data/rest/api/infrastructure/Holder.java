@@ -28,6 +28,16 @@ public class Holder {
     // list or set is the same thing here
     private Set<Account> accounts = new HashSet<>();
 
+
+
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(name="share_holder")
+    @Builder.Default
+    private Set<Share> shares = new HashSet<>();
+
     public void addAccount(Account account) {
         this.accounts.add(account);
         account.setHolder(this);

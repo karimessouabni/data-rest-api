@@ -58,9 +58,11 @@ public class DataRestApiApplication {
              * 2 then it save the karim account
              * 3 and save finally the transfer linking karim and Fati accounts
              */
+            karim.getShares().add(Share.builder().companyName("Apple").build());
+            /**
+             * 4 save the many to many relation between the Holder and Share
+             */
             holderRepository.save(karim);
-
-
 
         };
 
