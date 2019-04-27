@@ -19,7 +19,6 @@ import java.util.Set;
 @Builder
 public class Share {
 
-
     @Id
     @GeneratedValue
     private Integer id ;
@@ -28,7 +27,6 @@ public class Share {
     private String companyName;
 
     private Integer value ;
-
 
 
     @ManyToMany(mappedBy = "shares")

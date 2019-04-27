@@ -18,6 +18,7 @@ public class Transfer {
 
     private Integer amount;
 
+    // ManyToOne is by default Eager
     @ManyToOne
     @JoinColumn
     @ToString.Exclude
