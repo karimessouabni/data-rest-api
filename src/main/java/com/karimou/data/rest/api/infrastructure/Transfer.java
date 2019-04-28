@@ -15,7 +15,6 @@ public class Transfer {
     @GeneratedValue
     private Integer id ;
 
-
     private Integer amount;
 
     // ManyToOne is by default Eager

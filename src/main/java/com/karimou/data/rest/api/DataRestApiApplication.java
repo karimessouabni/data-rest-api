@@ -48,7 +48,7 @@ public class DataRestApiApplication {
 
             karim.addAccount(karimAccount); // when Karim open an Account in the Bank
             fati.addAccount(fatiAccount);// when Fati open an Account in the Bank
-            holderRepository.save(fati); // fati shoul be saved before the Transfer. karim not necessary
+            holderRepository.save(fati); // fati should be saved before the Transfer. karim not necessary
 
             karimAccount.makeTransfer(transfer100Euros, fatiAccount); // karim : KarimAccnt  --100€--> FatiAccnt
 
